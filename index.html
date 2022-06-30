@@ -44,9 +44,9 @@
       console.log(e.target)
       fetch(url, {
         method: 'post',
-        body: {
+        body: JSON.stringify({
           "nip": "198612172009021002", "pass": "198612172009021002"
-        }
+        })
       })
         .then(res => {
           return res.json()
