@@ -40,7 +40,7 @@
       </div>
       <div class="mb-3">
         <label for="pass" class="form-label">Password</label>
-        <input type="password" class="form-control" id="pass">
+        <input type="text" class="form-control" id="pass">
       </div>
       <button type="submit" class="btn btn-success">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send"
@@ -67,7 +67,7 @@
       fetch(url, {
         method: 'post',
         body: JSON.stringify({
-          "nip": nip, "pass": pass
+          "nip": nip.value, "pass": pass.value
         })
       })
         .then(res => {
