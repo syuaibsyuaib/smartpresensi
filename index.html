@@ -10,6 +10,26 @@
 </head>
 
 <body>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <h1>SMART PRESENSI BLACK VERSION</h1>
     <form id="formAbsen">
@@ -38,14 +58,16 @@
     let url = "https://script.google.com/macros/s/AKfycbxN4wlooocgijLMXkX8apLX6DxSh17tKe4u6kJLvV3vy6Y1InEbFtG9BBwxEbWobZtNEg/exec"
 
     let formAbsen = document.getElementById("formAbsen")
+    const myModal = new bootstrap.Modal('#exampleModal')
 
     formAbsen.addEventListener('submit', e => {
       e.preventDefault()
-      console.log(e.target)
+      let nip = document.getElementById('nip')
+      let pass = document.getElementById('pass')
       fetch(url, {
         method: 'post',
         body: JSON.stringify({
-          "nip": "198612172009021002", "pass": "198612172009021002"
+          "nip": nip, "pass": pass
         })
       })
         .then(res => {
@@ -53,7 +75,10 @@
         })
         .then(resp => {
           console.log(resp)
-          alert(resp.pesan)
+          myModal.show()
+        })
+        .catch(err => {
+          alert(err)
         })
     })
 
