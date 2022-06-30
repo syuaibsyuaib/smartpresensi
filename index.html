@@ -94,6 +94,8 @@
           myModal.show()
         })
         .catch(err => {
+          loading.style.display = 'none'
+          send.style.display = 'block'
           alert(err)
         })
     })
