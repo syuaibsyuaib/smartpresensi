@@ -41,20 +41,20 @@
 
     formAbsen.addEventListener('submit', e => {
       e.preventDefault()
-
+      console.log(e.target)
       fetch(url, {
         method: 'post',
         body: {
-          "nip": $('#nip').val(), "pass": $('#pass').val()
+          "nip": "198612172009021002", "pass": "198612172009021002"
         }
       })
-      .then(res => {
-        return res.json()
-      })
-      .then(resp => {
-        console.log(resp)
-        alert(resp.pesan)
-      })
+        .then(res => {
+          return res.json()
+        })
+        .then(resp => {
+          console.log(resp)
+          alert(resp.pesan)
+        })
     })
 
   </script>
